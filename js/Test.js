@@ -1,28 +1,36 @@
 const rp = require('request-promise');
 const cheerio = require("cheerio");
 const url = "https://tr.wikipedia.org/wiki/Tehlikedeki_t%C3%BCrler";
- 
 
 rp(url).then(function(html){
-    const $ = cheerio.load(html);
-    //var canli = new Object();
-    ad = []
-    sinif = []
-    cins = []
-    
-    const adres = "div.mw-parser-output > ul > li";
-    const adresSinif = "div.mw-parser-output > h2 > span.mw-headline > a";
-    const adresCins = "div.mw-parser-output > h3 > span.mw-headline"
+    var $ = cheerio.load(html);
+    adres = "div.mw-parser-output>ul>li>a:nth-child(1)"
+    for(i=0;i<$(adres,html).length-3;i++){
+        
+        if($(adres,html).eq(i).hasClass("new")){
+            continue;
+        }
+        
+        rp("https://tr.wikipedia.org"+$(adres,html).eq(i).attr("href")).then(function(html){
+            var $ = cheerio.load(html);
+            var adresIsim = "div.mw-content-container>main:nth-child(1)>header>h1"
+            var adresResim = "a.image>img"
+            var adresTehlike = "td>img"
 
-    const sinirAd = $(adres,html).length;
-
-    for(i=0;i<sinirAd;i++){
-        ad[i] = $(adres,html).eq(i).text();
-        cins[i] = $(adresCins,html).eq(i).attr("id");
-        sinif[i] = $(adresSinif,html).eq(i).text();
-        console.log("AD: "+ad[i]+"\nCins: "+cins[i]+"\nSınıf: "+sinif[i]+"\n***********\n")
-       
+            var tehlike = $(adresTehlike,html).attr("src")
+            if($("img<div<div",html).hasClass("center")){
+                tehlike = $("div.center>div>img",html).attr("src")    
+            }   
+            var isim = $(adresIsim,html).text()
+            var resim = $(adresResim,html).attr("src")
+            
+            console.log(isim+"#")
+            console.log(resim+"#")
+            console.log(tehlike+"#")
+        })
     }
+    
 }).catch(function(error){
     console.log(error);
 });
+
