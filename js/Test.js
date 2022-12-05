@@ -16,17 +16,27 @@ rp(url).then(function(html){
             var adresIsim = "div.mw-content-container>main:nth-child(1)>header>h1"
             var adresResim = "a.image>img"
             var adresTehlike = "td>img"
+            var adresBilgi = "div.mw-parser-output>p"
 
             var tehlike = $(adresTehlike,html).attr("src")
             if($("img<div<div",html).hasClass("center")){
                 tehlike = $("div.center>div>img",html).attr("src")    
-            }   
+            }
+            var bilgi = $(adresBilgi,html).text()   
             var isim = $(adresIsim,html).text()
             var resim = $(adresResim,html).attr("src")
+            bilgi_ = bilgi.split(".")
             
             console.log(isim+"#")
             console.log(resim+"#")
             console.log(tehlike+"#")
+            if(bilgi_.length<2){
+                console.log(bilgi_[0]+". #")
+            }else if(bilgi_.length<3){
+                console.log(bilgi_[0]+"."+bilgi_[1]+". #")
+            }else{
+                console.log(bilgi_[0]+"."+bilgi_[1]+"."+bilgi_[2]+". #")
+            }
         })
     }
     
