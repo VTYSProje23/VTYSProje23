@@ -1,0 +1,66 @@
+.Help {
+  width: 150%;
+  height: 900px;
+  position: absolute;
+  padding: 0 6px;
+  padding-bottom: 3px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #fafafa;
+  
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(133,133,133,0.5);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(133,133,133,0.5);
+  box-shadow: 0px 0px 5px 0px rgba(133,133,133,0.5);
+  
+}
+
+.Help ::after{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 85%;
+    left: 100%;
+    box-sizing: border-box;
+    
+    border: 5px solid #fff;
+    border-color: transparent transparent #fff #fff;
+    
+    
+    
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(133,133,133,0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(133,133,133,0.5);
+    box-shadow: 0px 0px 5px 0px rgba(133,133,133,0.5);
+}
+.location_text{
+  font-size: 12px;
+  color: rgb(71, 71, 71);
+}
+
+#africa {
+  fill: black;
+  margin: 0 auto;
+  position: relative;
+}
+
+#asia {
+  fill: black;
+  margin: 0 auto;
+  position: relative;
+}
+
+#australia {
+  fill: black;
+  margin: 0 auto;
+  position: relative;
+}
+#europe {
+  fill: rgb(0, 0, 0);
+  margin: 0 auto;
+  position: relative;
+}
+
+
+
+.Help g:active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
